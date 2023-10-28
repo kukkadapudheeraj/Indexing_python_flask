@@ -52,9 +52,12 @@ class Postings:
         for each_token in token_list:
             token_linked_list = final_linked_list[each_token]
             result_json["postingsListSkip"][each_token]=[]
-            while token_linked_list:
+            if token_linked_list.second_next:
                 result_json["postingsListSkip"][each_token].append(token_linked_list.data)
                 token_linked_list = token_linked_list.second_next
+                while token_linked_list:
+                    result_json["postingsListSkip"][each_token].append(token_linked_list.data)
+                    token_linked_list = token_linked_list.second_next
         return result_json
 
         

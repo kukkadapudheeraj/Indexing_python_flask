@@ -25,7 +25,7 @@ class Postings_Linked_List:
             # Adding Skip Pointers length calculation
             list_length = len(value)
             if math.sqrt(list_length).is_integer():
-                skip_length = math.floor(math.sqrt(list_length))-1
+                skip_length = math.floor(math.sqrt(list_length))
             else:
                 skip_length = round(math.sqrt(list_length))
 

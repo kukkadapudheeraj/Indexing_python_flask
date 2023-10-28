@@ -41,7 +41,7 @@ class Daat:
         result_json["num_docs"] = len(final_list)
         result_json["results"] = final_list
         return result_json
-        pass
+        
 
 
     def merger(list1,list2,num_comparisions):
@@ -82,7 +82,7 @@ class Daat:
                     list1[0] = list1[0].next
         
         return result.head,num_comparisions
-        pass
+        
 
 
     def getSortedPairs(query):
@@ -102,7 +102,7 @@ class Daat:
 
         sorted_pairs = sorted(pairs, key=lambda x: x[1])
         return sorted_pairs
-        pass
+        
 
 
     

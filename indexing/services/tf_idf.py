@@ -20,14 +20,12 @@ class Tf_Idf:
             postings_data = json.load(json_file)
         for key, value in token_data.items():
             string_counts = Counter(value)
+            # print(key , string_counts)
             cumulative_score = 0
             for string,count in string_counts.items():
                 tf = (count/len(value))
-                idf_score = 0
-                for each_doc in postings_data[string]:
-                    each_doc_counter = Counter(token_data[each_doc])
-                    idf_score+=each_doc_counter[string]
-                idf_score = len(token_data.keys())/idf_score
+                # print(string, '-------------',len(token_data.keys()) ,'----------------', len(postings_data[string]))
+                idf_score = len(token_data.keys())/len(postings_data[string])
                 cumulative_score+=tf*idf_score
             resultant_tf_score[key] = cumulative_score
         tf_idf_score_file = os.path.join(os.path.dirname(__file__), '../helpers/tf_idf_score.json')
@@ -47,7 +45,7 @@ class Tf_Idf:
             temp_list.append(each_doc)
             temp_list.append(tf_idf_score[str(each_doc)])
             pairs.append(temp_list)
-        sorted_pairs = sorted(pairs, key=lambda x: x[1],reverse=True)
+        sorted_pairs = sorted(pairs, key=lambda x: x[1])
         result_postings = []
         for each_post in sorted_pairs:
             result_postings.append(each_post[0])
@@ -67,7 +65,7 @@ class Tf_Idf:
             temp_list.append(each_doc)
             temp_list.append(tf_idf_score[str(each_doc)])
             pairs.append(temp_list)
-        sorted_pairs = sorted(pairs, key=lambda x: x[1],reverse=True)
+        sorted_pairs = sorted(pairs, key=lambda x: x[1])
         result_postings = []
         for each_post in sorted_pairs:
             result_postings.append(each_post[0])
