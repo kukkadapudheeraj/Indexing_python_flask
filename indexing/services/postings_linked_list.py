@@ -27,7 +27,7 @@ class Postings_Linked_List:
             if math.sqrt(list_length).is_integer():
                 skip_length = math.floor(math.sqrt(list_length))-1
             else:
-                skip_length = math.floor(math.sqrt(list_length))
+                skip_length = round(math.sqrt(list_length))
 
             new_list = Postings_Linked_List()
             for each_doc in value:

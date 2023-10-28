@@ -15,16 +15,19 @@ class Tf_Idf:
         token_file = os.path.join(os.path.dirname(__file__), '../helpers/tokenized_corpus.json')
         with open(token_file, 'r', encoding='utf-8') as json_file:
             token_data = json.load(json_file)
+        postings_file = os.path.join(os.path.dirname(__file__), '../helpers/postings.json')
+        with open(postings_file, 'r', encoding='utf-8') as json_file:
+            postings_data = json.load(json_file)
         for key, value in token_data.items():
             string_counts = Counter(value)
             cumulative_score = 0
             for string,count in string_counts.items():
-                tf = count/len(value)
-                term_doc_count=0
-                for term_key,term_value in token_data.items():
-                    if string in term_value:
-                        term_doc_count+=1
-                idf_score = len(token_data.keys())/term_doc_count
+                tf = (count/len(value))
+                idf_score = 0
+                for each_doc in postings_data[string]:
+                    each_doc_counter = Counter(token_data[each_doc])
+                    idf_score+=each_doc_counter[string]
+                idf_score = len(token_data.keys())/idf_score
                 cumulative_score+=tf*idf_score
             resultant_tf_score[key] = cumulative_score
         tf_idf_score_file = os.path.join(os.path.dirname(__file__), '../helpers/tf_idf_score.json')

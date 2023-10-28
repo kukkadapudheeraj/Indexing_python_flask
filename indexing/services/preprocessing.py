@@ -43,7 +43,7 @@ class preProcess:
     
     def trim_extra_characters(input_string):
         trimmed_string = re.sub(r'[^a-zA-Z0-9\s]', ' ', input_string)
-        trimmed_string = re.sub(r'\s+', ' ', trimmed_string)
+        trimmed_string = re.sub(r'\s+',' ', trimmed_string)
         return trimmed_string
     
     def whitespace_tokenize(input_string):
