@@ -59,7 +59,7 @@ class preProcess:
         stopwords_list = stopwords.words('english')
         output_token_list = []
         for word in token_list:
-            if word not in stopwords_list:
+            if word not in stopwords_list and len(word)>0:
                 output_token_list.append(word)
         return output_token_list
     

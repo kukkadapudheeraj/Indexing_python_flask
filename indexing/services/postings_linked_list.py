@@ -33,7 +33,7 @@ class Postings_Linked_List:
             for each_doc in value:
                 new_list.head = new_list.insert(int(each_doc))
             final_linked_list[key] = new_list.head
-            if skip_length > 0 :
+            if skip_length > 0 and list_length>2:
                 final_linked_list[key] = Postings_Linked_List.add_skip_pointers(new_list.head,skip_length)
         
         
