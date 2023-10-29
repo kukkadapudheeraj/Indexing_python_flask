@@ -4,16 +4,17 @@ from indexing.services.daat import Daat
 from indexing.services.tf_idf import Tf_Idf
 from indexing.services.postings import Postings
 import time
+import json
 
 base = Blueprint('base',__name__)
 
-@base.route('/',methods=['GET', 'POST'])
+@base.route('/execute_query',methods=['GET', 'POST'])
 def index():
     if request.method == 'GET':
         return "Hello , Hope you are doing great... !! Please use POST method to get valid results"
     elif request.method == 'POST':
         start_time = time.time()
-        split_query = request.data.decode('utf-8').splitlines()
+        split_query = request.json["queries"]
         result_json = {}
         query_token_list=[]
         for each_query in split_query:
