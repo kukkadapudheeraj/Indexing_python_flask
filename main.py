@@ -11,7 +11,7 @@ if __name__ == '__main__':
     preProcess.clean()
     Postings.create_postings()
     Postings_Linked_List.create_linked_list()
-    Tf_Idf.calculate_tf_id()
+    Tf_Idf.calculate_tf_idf()
     # Postings_Linked_List.print_linked_list()
     app.run(host='127.0.0.1',port=9999,debug=True)
 

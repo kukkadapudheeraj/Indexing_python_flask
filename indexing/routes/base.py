@@ -32,8 +32,8 @@ def index():
             query_token_list = preProcess.clean(each_query)
             result_json["daatAnd"][each_query]= Daat.daatAnd(query_token_list)
             result_json["daatAndSkip"][each_query] = Daat.daatAndSkip(query_token_list)
-            result_json["daatAndTfIdf"][each_query] = Tf_Idf.daatAndTfIdf(each_query,result_json["daatAnd"][each_query])
-            result_json["daatAndSkipTfIdf"][each_query] = Tf_Idf.daatAndSkipTfIdf(each_query,result_json["daatAndSkip"][each_query])
+            result_json["daatAndTfIdf"][each_query] = Tf_Idf.daatAndTfIdf(query_token_list,result_json["daatAnd"][each_query])
+            result_json["daatAndSkipTfIdf"][each_query] = Tf_Idf.daatAndSkipTfIdf(query_token_list,result_json["daatAndSkip"][each_query])
             result_json = Postings.getPostings(result_json,query_token_list) 
             result_json = Postings.getPostingsSkip(result_json,query_token_list) 
         final_result={}
