@@ -42,9 +42,10 @@ class Tf_Idf:
         tf_idf_score={}
         for each_doc in postings_list:
             cumulative_score=0
+            maxi=0
             for each_token in query_tokens:
-                cumulative_score+=(tf_score[str(each_doc)][each_token])*(len(tf_score.keys())/len(postings_data[each_token]))
-            tf_idf_score[str(each_doc)]=cumulative_score
+                maxi=max(maxi,(tf_score[str(each_doc)][each_token])*(len(tf_score.keys())/len(postings_data[each_token])))
+            tf_idf_score[str(each_doc)]=maxi
 
         for each_doc in postings_list:
             temp_list=[]
@@ -73,9 +74,10 @@ class Tf_Idf:
         tf_idf_score={}
         for each_doc in postings_list:
             cumulative_score=0
+            maxi=0
             for each_token in query_tokens:
-                cumulative_score+=(tf_score[str(each_doc)][each_token])*(len(tf_score.keys())/len(postings_data[each_token]))
-            tf_idf_score[str(each_doc)]=cumulative_score
+                maxi=max(maxi,(tf_score[str(each_doc)][each_token])*(len(tf_score.keys())/len(postings_data[each_token])))
+            tf_idf_score[str(each_doc)]=maxi
 
         for each_doc in postings_list:
             temp_list=[]
